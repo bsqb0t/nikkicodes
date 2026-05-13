@@ -2,9 +2,12 @@
   {
     "id": "outfit-001",
     "name": "眠于花畔",
-    "aliases": ["花畔", "睡莲"],
-    "code": "nkA3mK9xR5pW2bD!",
-    "image": "https://picsum.photos/seed/outfit001/600/800",
+    "aliases": [
+      "花畔",
+      "睡莲"
+    ],
+    "code": "1amDS0Y5yJ9#",
+    "image": "https://webstatic.infoldgames.com/7d325eec933f05b1/images/bg/4m4ZpyR9C4o1an27.jpg",
     "color": "粉色",
     "style": "梦幻",
     "setName": "万灵系列"
@@ -12,9 +15,11 @@
   {
     "id": "outfit-002",
     "name": "谒灵",
-    "aliases": ["灵魂引渡"],
-    "code": "nkC7nL2yT8qX4cF@",
-    "image": "https://picsum.photos/seed/outfit002/600/800",
+    "aliases": [
+      "灵魂引渡"
+    ],
+    "code": "1aP1xNsFe3Y#",
+    "image": "https://webstatic.infoldgames.com/7d325eec933f05b1/images/bg/xU6T9slSCS8NdY7I.jpg",
     "color": "黑色",
     "style": "优雅",
     "setName": "万灵系列"
@@ -22,9 +27,12 @@
   {
     "id": "outfit-003",
     "name": "心愿金蔷薇",
-    "aliases": ["金蔷薇", "黄金之愿"],
-    "code": "nkE1pB4wU3sZ6dH#",
-    "image": "https://picsum.photos/seed/outfit003/600/800",
+    "aliases": [
+      "金蔷薇",
+      "黄金之愿"
+    ],
+    "code": "1adBCIZSAFJ",
+    "image": "https://webstatic.infoldgames.com/7d325eec933f05b1/images/bg/p0yn1hb7Ki0KBwMm.jpg",
     "color": "黄色",
     "style": "优雅",
     "setName": "万灵系列"
@@ -32,9 +40,12 @@
   {
     "id": "outfit-004",
     "name": "咏叹银夜莺",
-    "aliases": ["银夜莺", "夜莺之歌"],
-    "code": "nkG5qD8vI7tA8eJ$",
-    "image": "https://picsum.photos/seed/outfit004/600/800",
+    "aliases": [
+      "银夜莺",
+      "夜莺之歌"
+    ],
+    "code": "1awfnXnO9I2#",
+    "image": "https://webstatic.infoldgames.com/7d325eec933f05b1/images/bg/rR5FzE8hrp5qoytq.jpg",
     "color": "白色",
     "style": "优雅",
     "setName": "万灵系列"
@@ -42,9 +53,12 @@
   {
     "id": "outfit-005",
     "name": "星之海",
-    "aliases": ["星辰大海", "星河"],
-    "code": "nkI9rF2wK9uB0fK%",
-    "image": "https://picsum.photos/seed/outfit005/600/800",
+    "aliases": [
+      "星辰大海",
+      "星河"
+    ],
+    "code": "1a7jgY0Bwnd",
+    "image": "https://webstatic.infoldgames.com/7d325eec933f05b1/images/bg/LO7n2mV9F2PFT1Io.jpg",
     "color": "蓝色",
     "style": "梦幻",
     "setName": "星海系列"
@@ -52,9 +66,11 @@
   {
     "id": "outfit-006",
     "name": "栖骨生花",
-    "aliases": ["龙骨花"],
-    "code": "nkK3sG6xL1vC2gL^",
-    "image": "https://picsum.photos/seed/outfit006/600/800",
+    "aliases": [
+      "龙骨花"
+    ],
+    "code": "1adDn2w8VTe#",
+    "image": "https://webstatic.infoldgames.com/7d325eec933f05b1/images/bg/n0KtB3b6d6afr3fI.jpg",
     "color": "白色",
     "style": "清新",
     "setName": "万灵系列"
@@ -62,9 +78,11 @@
   {
     "id": "outfit-007",
     "name": "渡者无归",
-    "aliases": ["摆渡人"],
-    "code": "nkM7tH0yM3wD4hM&",
-    "image": "https://picsum.photos/seed/outfit007/600/800",
+    "aliases": [
+      "摆渡人"
+    ],
+    "code": "1adYsZivl70#",
+    "image": "https://webstatic.infoldgames.com/7d325eec933f05b1/images/bg/ywAve5B0UBmSP0Po.jpg",
     "color": "紫色",
     "style": "优雅",
     "setName": "万灵系列"
@@ -72,9 +90,12 @@
   {
     "id": "outfit-008",
     "name": "星屑小梦曲",
-    "aliases": ["小梦曲", "星梦"],
-    "code": "nkO1uJ4zN5xE6iN*",
-    "image": "https://picsum.photos/seed/outfit008/600/800",
+    "aliases": [
+      "小梦曲",
+      "星梦"
+    ],
+    "code": "1adKUnGwFad#",
+    "image": "https://webstatic.infoldgames.com/7d325eec933f05b1/images/bg/rsGXzfMDF30KaUQJ.jpg",
     "color": "粉色",
     "style": "梦幻",
     "setName": "星梦系列"
@@ -82,9 +103,12 @@
   {
     "id": "outfit-009",
     "name": "漫夜灯语",
-    "aliases": ["灯语", "夜灯"],
-    "code": "nkQ5vK8oP7yF8jO(",
-    "image": "https://picsum.photos/seed/outfit009/600/800",
+    "aliases": [
+      "灯语",
+      "夜灯"
+    ],
+    "code": "1aj4oqxU8NT#",
+    "image": "https://webstatic.infoldgames.com/7d325eec933f05b1/images/bg/Rq6GE8jsMPppyVaS.jpg",
     "color": "蓝色",
     "style": "清新",
     "setName": "童话系列"
@@ -92,9 +116,12 @@
   {
     "id": "outfit-010",
     "name": "重逢之约",
-    "aliases": ["重逢", "盛装"],
-    "code": "nkS9wL2qR9zG0kP)",
-    "image": "https://picsum.photos/seed/outfit010/600/800",
+    "aliases": [
+      "重逢",
+      "盛装"
+    ],
+    "code": "1a58itR6Skw#",
+    "image": "https://webstatic.infoldgames.com/7d325eec933f05b1/images/bg/N3CF6ZUBBAVf8MAO.jpg",
     "color": "粉色",
     "style": "优雅",
     "setName": "童话系列"
@@ -102,9 +129,12 @@
   {
     "id": "outfit-011",
     "name": "蝶屿风袭",
-    "aliases": ["风蝶", "蝶屿"],
-    "code": "nkU3xM4sT1aH2lQ_",
-    "image": "https://picsum.photos/seed/outfit011/600/800",
+    "aliases": [
+      "风蝶",
+      "蝶屿"
+    ],
+    "code": "1azLhIPdwmn#",
+    "image": "https://webstatic.infoldgames.com/7d325eec933f05b1/images/bg/LrDRlU1IaxFQ98sw.jpg",
     "color": "蓝色",
     "style": "优雅",
     "setName": "星海系列"
@@ -112,9 +142,12 @@
   {
     "id": "outfit-012",
     "name": "辉月诺言",
-    "aliases": ["辉月", "月之诺言"],
-    "code": "nkW7yN6uV3bI4mR-",
-    "image": "https://picsum.photos/seed/outfit012/600/800",
+    "aliases": [
+      "辉月",
+      "月之诺言"
+    ],
+    "code": "1aYFM1EOGz8#",
+    "image": "https://webstatic.infoldgames.com/7d325eec933f05b1/images/bg/4m4ZpyR9C4o1an27.jpg",
     "color": "紫色",
     "style": "梦幻",
     "setName": "星海系列"
@@ -122,9 +155,12 @@
   {
     "id": "outfit-013",
     "name": "纯净之风",
-    "aliases": [" purification", "清风"],
-    "code": "nkY1zP8wW5cJ6nS+",
-    "image": "https://picsum.photos/seed/outfit013/600/800",
+    "aliases": [
+      " purification",
+      "清风"
+    ],
+    "code": "1a7ldWzxg1J",
+    "image": "https://webstatic.infoldgames.com/7d325eec933f05b1/images/bg/xU6T9slSCS8NdY7I.jpg",
     "color": "白色",
     "style": "清新",
     "setName": "能力套装"
@@ -132,9 +168,12 @@
   {
     "id": "outfit-014",
     "name": "轻盈泡泡",
-    "aliases": ["泡泡", "漂浮"],
-    "code": "nkA3aQ0xX7dK8oT=",
-    "image": "https://picsum.photos/seed/outfit014/600/800",
+    "aliases": [
+      "泡泡",
+      "漂浮"
+    ],
+    "code": "1ajvL0iCz5C#",
+    "image": "https://webstatic.infoldgames.com/7d325eec933f05b1/images/bg/p0yn1hb7Ki0KBwMm.jpg",
     "color": "蓝色",
     "style": "清新",
     "setName": "能力套装"
@@ -142,9 +181,12 @@
   {
     "id": "outfit-015",
     "name": "午后暖阳",
-    "aliases": ["暖阳", "捕虫"],
-    "code": "nkC5bR2yY9eL0pU~",
-    "image": "https://picsum.photos/seed/outfit015/600/800",
+    "aliases": [
+      "暖阳",
+      "捕虫"
+    ],
+    "code": "1a7qXSiHX40",
+    "image": "https://webstatic.infoldgames.com/7d325eec933f05b1/images/bg/rR5FzE8hrp5qoytq.jpg",
     "color": "黄色",
     "style": "休闲",
     "setName": "能力套装"
@@ -152,9 +194,12 @@
   {
     "id": "outfit-016",
     "name": "悠然水畔",
-    "aliases": ["水畔", "钓鱼"],
-    "code": "nkE7cS4zZ1fM2qV:",
-    "image": "https://picsum.photos/seed/outfit016/600/800",
+    "aliases": [
+      "水畔",
+      "钓鱼"
+    ],
+    "code": "1aRQmB3XlgC",
+    "image": "https://webstatic.infoldgames.com/7d325eec933f05b1/images/bg/LO7n2mV9F2PFT1Io.jpg",
     "color": "蓝色",
     "style": "休闲",
     "setName": "能力套装"
@@ -162,9 +207,12 @@
   {
     "id": "outfit-017",
     "name": "飞花的追忆",
-    "aliases": ["飞花", "滑翔"],
-    "code": "nkG9dT6aA2gN4rW;",
-    "image": "https://picsum.photos/seed/outfit017/600/800",
+    "aliases": [
+      "飞花",
+      "滑翔"
+    ],
+    "code": "1azIc83NK3O#",
+    "image": "https://webstatic.infoldgames.com/7d325eec933f05b1/images/bg/n0KtB3b6d6afr3fI.jpg",
     "color": "白色",
     "style": "清新",
     "setName": "能力套装"
@@ -172,9 +220,12 @@
   {
     "id": "outfit-018",
     "name": "灰尘拜拜",
-    "aliases": ["清洁", "扫除"],
-    "code": "nkI1eU8bB3hO6sX,",
-    "image": "https://picsum.photos/seed/outfit018/600/800",
+    "aliases": [
+      "清洁",
+      "扫除"
+    ],
+    "code": "1a2Y7Sp2Z6X#",
+    "image": "https://webstatic.infoldgames.com/7d325eec933f05b1/images/bg/ywAve5B0UBmSP0Po.jpg",
     "color": "粉色",
     "style": "休闲",
     "setName": "能力套装"
@@ -182,9 +233,12 @@
   {
     "id": "outfit-019",
     "name": "笔尖漾奇彩",
-    "aliases": ["笔尖", "绘画"],
-    "code": "nkK3fV0cC5iP8tY.",
-    "image": "https://picsum.photos/seed/outfit019/600/800",
+    "aliases": [
+      "笔尖",
+      "绘画"
+    ],
+    "code": "1aXkF9wM5nD#",
+    "image": "https://webstatic.infoldgames.com/7d325eec933f05b1/images/bg/rsGXzfMDF30KaUQJ.jpg",
     "color": "黄色",
     "style": "清新",
     "setName": "能力套装"
@@ -192,9 +246,12 @@
   {
     "id": "outfit-020",
     "name": "群星绽放时",
-    "aliases": ["群星", "绽放"],
-    "code": "nkM5gW2dD7jQ0uZ<",
-    "image": "https://picsum.photos/seed/outfit020/600/800",
+    "aliases": [
+      "群星",
+      "绽放"
+    ],
+    "code": "1aBvR4tH8jK",
+    "image": "https://webstatic.infoldgames.com/7d325eec933f05b1/images/bg/Rq6GE8jsMPppyVaS.jpg",
     "color": "粉色",
     "style": "梦幻",
     "setName": "星海系列"
@@ -202,9 +259,12 @@
   {
     "id": "outfit-021",
     "name": "天鹅童话",
-    "aliases": ["天鹅", "公主"],
-    "code": "nkO7hX4eE9kR2vA>",
-    "image": "https://picsum.photos/seed/outfit021/600/800",
+    "aliases": [
+      "天鹅",
+      "公主"
+    ],
+    "code": "1aNmL2pQ6sW#",
+    "image": "https://webstatic.infoldgames.com/7d325eec933f05b1/images/bg/N3CF6ZUBBAVf8MAO.jpg",
     "color": "白色",
     "style": "优雅",
     "setName": "童话系列"
@@ -212,9 +272,12 @@
   {
     "id": "outfit-022",
     "name": "琴弦之诗",
-    "aliases": ["琴弦", "演奏"],
-    "code": "nkQ9iY6fF1lS4wB?",
-    "image": "https://picsum.photos/seed/outfit022/600/800",
+    "aliases": [
+      "琴弦",
+      "演奏"
+    ],
+    "code": "1aCfG7hU0xY#",
+    "image": "https://webstatic.infoldgames.com/7d325eec933f05b1/images/bg/LrDRlU1IaxFQ98sw.jpg",
     "color": "紫色",
     "style": "优雅",
     "setName": "能力套装"
@@ -222,9 +285,12 @@
   {
     "id": "outfit-023",
     "name": "迷你星芒",
-    "aliases": ["星芒", "缩小"],
-    "code": "nkS1jZ8gG3mT6xC/",
-    "image": "https://picsum.photos/seed/outfit023/600/800",
+    "aliases": [
+      "星芒",
+      "缩小"
+    ],
+    "code": "1aJdV5iE3oP",
+    "image": "https://webstatic.infoldgames.com/7d325eec933f05b1/images/bg/4m4ZpyR9C4o1an27.jpg",
     "color": "黄色",
     "style": "梦幻",
     "setName": "能力套装"
@@ -232,9 +298,12 @@
   {
     "id": "outfit-024",
     "name": "满电行动",
-    "aliases": ["维修", "电力"],
-    "code": "nkU3kA0hH5nU8yD.",
-    "image": "https://picsum.photos/seed/outfit024/600/800",
+    "aliases": [
+      "维修",
+      "电力"
+    ],
+    "code": "1aZwK1bL9rT#",
+    "image": "https://webstatic.infoldgames.com/7d325eec933f05b1/images/bg/xU6T9slSCS8NdY7I.jpg",
     "color": "黑色",
     "style": "休闲",
     "setName": "能力套装"
