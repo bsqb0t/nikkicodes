@@ -319,17 +319,5 @@
   "color": "粉色",
   "style": "优雅",
   "setName": "万灵系列"
-},
-{
-  "id": "outfit-11246",
-  "name": "1",
-  "aliases": [
-    "测试"
-  ],
-  "code": "1",
-  "image": "images/2024_12_07_21_10_25_8940726.jpeg",
-  "color": "587",
-  "style": "144",
-  "setName": "附件"
 }
 ]
