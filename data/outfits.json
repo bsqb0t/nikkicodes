@@ -307,7 +307,7 @@
     "color": "黑色",
     "style": "休闲",
     "setName": "能力套装"
-  }
+  },
   {
   "id": "outfit-10205",
   "name": "123",
@@ -315,9 +315,9 @@
     "adad"
   ],
   "code": "adads",
-  "image": "images/outfit-10205.jpeg",
+  "image": "images/2026_01_07_02_50_47_538451.jpeg",
   "color": "粉色",
   "style": "优雅",
   "setName": "万灵系列"
-},
+}
 ]
