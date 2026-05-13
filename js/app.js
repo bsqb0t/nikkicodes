@@ -165,7 +165,7 @@
       const safeCode = escapeHtml(item.code);
       return `
         <div class="card">
-          <div class="card-image" onclick="openLightbox('${item.image}')">
+          <div class="card-image" data-image="${item.image}">
             <img src="${item.image}" alt="${escapeHtml(item.name)}" loading="lazy">
           </div>
           <div class="card-body">
@@ -190,11 +190,12 @@
       `;
     }).join('');
 
-    // Event delegation for copy
+    // Event delegation for image click + copy
+    grid.querySelectorAll('.card-image').forEach(el => {
+      el.addEventListener('click', () => openLightbox(el.dataset.image));
+    });
     grid.querySelectorAll('.card-code, .copy-btn').forEach(el => {
-      el.addEventListener('click', () => {
-        copyCode(el.dataset.code);
-      });
+      el.addEventListener('click', () => copyCode(el.dataset.code));
     });
   }
 
