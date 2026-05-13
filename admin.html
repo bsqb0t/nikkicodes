@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>添加搭配 · 管理工具</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    }
+    .admin-wrap {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+    .admin-wrap h1 {
+      font-size: 24px;
+      margin-bottom: 4px;
+      color: #0369a1;
+    }
+    .admin-wrap .sub {
+      color: #64748b;
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-grid .full {
+      grid-column: 1 / -1;
+    }
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 4px;
+    }
+    label .req { color: #dc2626; margin-left: 2px; }
+    input, select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      box-sizing: border-box;
+    }
+    input:focus, select:focus {
+      border-color: #0ea5e9;
+      box-shadow: 0 0 0 3px rgba(14,165,233,0.12);
+    }
+
+    /* Image upload */
+    .drop-zone {
+      border: 2px dashed #cbd5e1;
+      border-radius: 12px;
+      padding: 32px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: #f8fafc;
+    }
+    .drop-zone:hover, .drop-zone.dragover {
+      border-color: #0ea5e9;
+      background: #f0f9ff;
+    }
+    .drop-zone.has-img {
+      padding: 8px;
+      border-style: solid;
+      background: #fff;
+    }
+    .drop-zone img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 8px;
+      display: block;
+      margin: 0 auto;
+    }
+    .drop-zone .hint {
+      color: #94a3b8;
+      font-size: 14px;
+    }
+    .drop-zone .hint-icon { font-size: 32px; display: block; margin-bottom: 8px; }
+
+    /* Preview card */
+    .preview-section {
+      margin-top: 24px;
+    }
+    .preview-section h3 {
+      font-size: 15px;
+      color: #334155;
+      margin-bottom: 12px;
+    }
+    .preview-card {
+      width: 260px;
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .preview-card .pc-img {
+      aspect-ratio: 3 / 4;
+      background: #e2e8f0;
+      overflow: hidden;
+    }
+    .preview-card .pc-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .preview-card .pc-body {
+      padding: 12px 14px 14px;
+    }
+    .preview-card .pc-name {
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .preview-card .pc-code {
+      font-family: monospace;
+      font-size: 13px;
+      background: #f1f5f9;
+      padding: 6px 10px;
+      border-radius: 6px;
+      margin: 6px 0;
+      word-break: break-all;
+    }
+    .preview-card .pc-tags {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+    .preview-card .pc-tags span {
+      font-size: 11px;
+      padding: 2px 10px;
+      border-radius: 999px;
+    }
+
+    /* Output */
+    .output-section {
+      margin-top: 24px;
+    }
+    .output-section h3 {
+      font-size: 15px;
+      color: #334155;
+      margin-bottom: 8px;
+    }
+    .output-box {
+      position: relative;
+    }
+    .output-box textarea {
+      width: 100%;
+      min-height: 200px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 13px;
+      padding: 14px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      background: #0f172a;
+      color: #e2e8f0;
+      resize: vertical;
+      outline: none;
+    }
+    .copy-btn-sm {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 6px 14px;
+      background: #334155;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .copy-btn-sm:hover { background: #475569; }
+
+    .btn-gen {
+      padding: 12px 32px;
+      background: #0ea5e9;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 8px;
+    }
+    .btn-gen:hover { background: #0284c7; }
+
+    .id-preview {
+      font-size: 13px;
+      color: #64748b;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 600px) {
+      .form-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-wrap">
+    <h1>✚ 添加新搭配</h1>
+    <p class="sub">填写信息后自动生成 JSON 和占位图</p>
+
+    <div class="form-grid">
+      <div class="full">
+        <label>截图 <span class="req">*</span></label>
+        <div class="drop-zone" id="dropZone">
+          <span class="hint-icon">🖼</span>
+          <div class="hint">点击或拖拽上传截图<br><small>推荐 3:4 比例，如 600×800</small></div>
+        </div>
+        <input type="file" id="fileInput" accept="image/*" style="display:none">
+      </div>
+
+      <div>
+        <label>搭配名称 <span class="req">*</span></label>
+        <input type="text" id="fName" placeholder="如：花田漫步">
+      </div>
+      <div>
+        <label>搭配码 <span class="req">*</span></label>
+        <input type="text" id="fCode" placeholder="如：1amDS0Y5yJ9#">
+      </div>
+      <div>
+        <label>颜色 <span class="req">*</span></label>
+        <select id="fColor">
+          <option value="">— 选择 —</option>
+          <option value="粉色">粉色</option>
+          <option value="蓝色">蓝色</option>
+          <option value="黑色">黑色</option>
+          <option value="白色">白色</option>
+          <option value="黄色">黄色</option>
+          <option value="紫色">紫色</option>
+        </select>
+      </div>
+      <div>
+        <label>风格 <span class="req">*</span></label>
+        <select id="fStyle">
+          <option value="">— 选择 —</option>
+          <option value="清新">清新</option>
+          <option value="优雅">优雅</option>
+          <option value="梦幻">梦幻</option>
+          <option value="休闲">休闲</option>
+        </select>
+      </div>
+      <div>
+        <label>套装系列</label>
+        <select id="fSet">
+          <option value="">— 选择或手写 —</option>
+          <option value="万灵系列">万灵系列</option>
+          <option value="星海系列">星海系列</option>
+          <option value="能力套装">能力套装</option>
+          <option value="童话系列">童话系列</option>
+          <option value="星梦系列">星梦系列</option>
+        </select>
+      </div>
+      <div>
+        <label>别名</label>
+        <input type="text" id="fAliases" placeholder="逗号分隔，如：花花,春日">
+      </div>
+    </div>
+
+    <button class="btn-gen" id="btnGen">生成条目 &amp; 预览</button>
+    <div class="id-preview" id="idPreview"></div>
+
+    <!-- Preview -->
+    <div class="preview-section" id="previewSection" style="display:none">
+      <h3>卡片预览</h3>
+      <div class="preview-card" id="previewCard"></div>
+    </div>
+
+    <!-- Output -->
+    <div class="output-section" id="outputSection" style="display:none">
+      <h3>JSON — 复制到 <code>data/outfits.json</code></h3>
+      <div class="output-box">
+        <textarea id="outputJson" readonly></textarea>
+        <button class="copy-btn-sm" id="copyBtn">复制</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const $ = id => document.getElementById(id);
+
+    // ---------- Image upload ----------
+    let currentFile = null;
+    let imageDataUrl = null;
+
+    $('dropZone').addEventListener('click', () => $('fileInput').click());
+    $('dropZone').addEventListener('dragover', e => { e.preventDefault(); $('dropZone').classList.add('dragover'); });
+    $('dropZone').addEventListener('dragleave', () => $('dropZone').classList.remove('dragover'));
+    $('dropZone').addEventListener('drop', e => {
+      e.preventDefault();
+      $('dropZone').classList.remove('dragover');
+      const f = e.dataTransfer.files[0];
+      if (f) handleFile(f);
+    });
+    $('fileInput').addEventListener('change', e => {
+      if (e.target.files[0]) handleFile(e.target.files[0]);
+    });
+
+    function handleFile(f) {
+      if (!f.type.startsWith('image/')) return alert('请上传图片文件');
+      currentFile = f;
+      const reader = new FileReader();
+      reader.onload = e => {
+        imageDataUrl = e.target.result;
+        $('dropZone').classList.add('has-img');
+        $('dropZone').innerHTML = `<img src="${imageDataUrl}" alt="preview">`;
+      };
+      reader.readAsDataURL(f);
+    }
+
+    // ---------- Generate ----------
+    $('btnGen').addEventListener('click', () => {
+      const name = $('fName').value.trim();
+      const code = $('fCode').value.trim();
+      const color = $('fColor').value;
+      const style = $('fStyle').value;
+      const setName = $('fSet').value.trim();
+      const aliasesRaw = $('fAliases').value.trim();
+
+      if (!name) return alert('请输入搭配名称');
+      if (!code) return alert('请输入搭配码');
+      if (!color) return alert('请选择颜色');
+      if (!style) return alert('请选择风格');
+      if (!setName) return alert('请输入套装系列');
+
+      // ID generation
+      const id = 'outfit-' + String(Date.now()).slice(-5);
+      $('idPreview').textContent = `ID: ${id}`;
+
+      const aliases = aliasesRaw ? aliasesRaw.split(/[,，]/).map(s => s.trim()).filter(Boolean) : [];
+
+      // Image filename
+      const ext = currentFile ? currentFile.name.split('.').pop() || 'jpg' : 'svg';
+      const imgFile = `${id}.${ext}`;
+      const imgPath = currentFile ? `images/${imgFile}` : `images/${id}.svg`;
+
+      // Build JSON
+      const entry = {
+        id,
+        name,
+        aliases,
+        code,
+        image: imgPath,
+        color,
+        style,
+        setName
+      };
+
+      const jsonStr = JSON.stringify(entry, null, 2);
+      $('outputJson').value = jsonStr + ',';
+      $('outputSection').style.display = 'block';
+
+      // ---------- Preview ----------
+      const displayImg = imageDataUrl || '';
+      const tagColors = { '粉色':'#fce7f3','蓝色':'#dbeafe','黑色':'#e5e7eb','白色':'#f9fafb','黄色':'#fef9c3','紫色':'#ede9fe' };
+      const tagTexts = { '粉色':'#be185d','蓝色':'#1d4ed8','黑色':'#374151','白色':'#374151','黄色':'#92400e','紫色':'#7c3aed' };
+
+      $('previewCard').innerHTML = `
+        <div class="pc-img">${displayImg ? `<img src="${displayImg}" alt="${name}">` : `<div style="height:100%;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:13px">无图片</div>`}</div>
+        <div class="pc-body">
+          <div class="pc-name">${escHtml(name)}</div>
+          ${aliases.length ? `<div style="font-size:12px;color:#94a3b8">${escHtml(aliases.join(' / '))}</div>` : ''}
+          <div class="pc-code">${escHtml(code)}</div>
+          <div class="pc-tags">
+            <span style="background:${tagColors[color]||'#e2e8f0'};color:${tagTexts[color]||'#334155'}">${color}</span>
+            <span style="background:#ede9fe;color:#7c3aed">${style}</span>
+            <span style="background:#dbeafe;color:#1d4ed8">${setName}</span>
+          </div>
+        </div>
+      `;
+      $('previewSection').style.display = 'block';
+    });
+
+    // ---------- Copy ----------
+    $('copyBtn').addEventListener('click', () => {
+      const text = $('outputJson').value;
+      navigator.clipboard.writeText(text).then(() => {
+        $('copyBtn').textContent = '已复制 ✓';
+        setTimeout(() => { $('copyBtn').textContent = '复制'; }, 1500);
+      }).catch(() => {
+        $('outputJson').select();
+        document.execCommand('copy');
+      });
+    });
+
+    function escHtml(s) {
+      const d = document.createElement('div');
+      d.textContent = s;
+      return d.innerHTML;
+    }
+  </script>
+</body>
+</html>
