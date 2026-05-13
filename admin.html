@@ -212,12 +212,22 @@
 
     <div class="form-grid">
       <div class="full">
-        <label>截图 <span class="req">*</span></label>
-        <div class="drop-zone" id="dropZone">
-          <span class="hint-icon">🖼</span>
-          <div class="hint">点击或拖拽上传截图<br><small>推荐 3:4 比例，如 600×800</small></div>
+        <label>图片 <span class="req">*</span></label>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <div style="flex:1;min-width:180px">
+            <input type="text" id="fImageUrl" placeholder="输入图片URL（如 https://...）">
+          </div>
+          <div style="color:#94a3b8;line-height:38px">或</div>
+          <div style="flex:1;min-width:180px">
+            <div class="drop-zone" id="dropZone" style="padding:10px 16px">
+              <span style="font-size:14px;color:#94a3b8">📁 上传本地文件</span>
+            </div>
+            <input type="file" id="fileInput" accept="image/*" style="display:none">
+          </div>
         </div>
-        <input type="file" id="fileInput" accept="image/*" style="display:none">
+        <div id="imgPreviewWrap" style="margin-top:8px;display:none">
+          <img id="imgPreview" style="max-width:100%;max-height:160px;border-radius:8px">
+        </div>
       </div>
 
       <div>
@@ -262,10 +272,10 @@
     <div class="output-section" id="outputSection" style="display:none">
       <h3>JSON — 复制到 <code>data/outfits.json</code></h3>
       <p style="font-size:13px;color:#64748b;margin:4px 0 10px">
-        图片路径: <code id="imgPathDisplay" style="background:#f1f5f9;padding:2px 6px;border-radius:4px"></code><br>
-        粘贴到数组末尾 <code>]</code> 之前。若是追加到最后一条，则在前一条末尾补逗号。<br>
-        <strong>别忘了把上传的图片文件也 <code>git push</code> 到仓库</strong>
-      </p>
+         图片路径: <code id="imgPathDisplay" style="background:#f1f5f9;padding:2px 6px;border-radius:4px"></code><br>
+         粘贴到数组末尾 <code>]</code> 之前。若是追加到最后一条，则在前一条末尾补逗号。<br>
+         <strong id="pushNote">别忘了把上传的图片文件也 <code>git push</code> 到仓库</strong>
+       </p>
       <div class="output-box">
         <textarea id="outputJson" readonly></textarea>
         <button class="copy-btn-sm" id="copyBtn">复制</button>
@@ -276,10 +286,28 @@
   <script>
     const $ = id => document.getElementById(id);
 
-    // ---------- Image upload ----------
+    // ---------- Image: URL or file ----------
     let currentFile = null;
     let imageDataUrl = null;
 
+    function showPreview(src) {
+      const w = $('imgPreviewWrap');
+      const img = $('imgPreview');
+      img.src = src;
+      w.style.display = 'block';
+    }
+
+    // URL input → preview
+    $('fImageUrl').addEventListener('input', () => {
+      const url = $('fImageUrl').value.trim();
+      if (url) {
+        showPreview(url);
+      } else if (!currentFile) {
+        $('imgPreviewWrap').style.display = 'none';
+      }
+    });
+
+    // File upload
     $('dropZone').addEventListener('click', () => $('fileInput').click());
     $('dropZone').addEventListener('dragover', e => { e.preventDefault(); $('dropZone').classList.add('dragover'); });
     $('dropZone').addEventListener('dragleave', () => $('dropZone').classList.remove('dragover'));
@@ -296,11 +324,11 @@
     function handleFile(f) {
       if (!f.type.startsWith('image/')) return alert('请上传图片文件');
       currentFile = f;
+      $('fImageUrl').value = '';
       const reader = new FileReader();
       reader.onload = e => {
         imageDataUrl = e.target.result;
-        $('dropZone').classList.add('has-img');
-        $('dropZone').innerHTML = `<img src="${imageDataUrl}" alt="preview">`;
+        showPreview(imageDataUrl);
       };
       reader.readAsDataURL(f);
     }
@@ -313,48 +341,50 @@
       const style = $('fStyle').value;
       const setName = $('fSet').value.trim();
       const aliasesRaw = $('fAliases').value.trim();
+      const imgUrl = $('fImageUrl').value.trim();
 
       if (!name) return alert('请输入搭配名称');
       if (!code) return alert('请输入搭配码');
       if (!color) return alert('请选择颜色');
       if (!style) return alert('请选择风格');
       if (!setName) return alert('请输入套装系列');
+      if (!imgUrl && !currentFile) return alert('请输入图片URL或上传文件');
 
-      // ID generation
       const id = 'outfit-' + String(Date.now()).slice(-5);
       $('idPreview').textContent = `ID: ${id}`;
 
       const aliases = aliasesRaw ? aliasesRaw.split(/[,，]/).map(s => s.trim()).filter(Boolean) : [];
 
-      // Image filename — use original filename when uploaded
-      const imgPath = currentFile ? `images/${currentFile.name}` : `images/${id}.svg`;
+      // Image path: URL > uploaded file > SVG placeholder
+      let imgPath;
+      let displaySrc;
+      if (imgUrl) {
+        imgPath = imgUrl;
+        displaySrc = imgUrl;
+      } else if (currentFile) {
+        imgPath = `images/${currentFile.name}`;
+        displaySrc = imageDataUrl;
+      } else {
+        imgPath = `images/${id}.svg`;
+        displaySrc = '';
+      }
 
-      // Show image path
       $('imgPathDisplay').textContent = imgPath;
 
-      // Build JSON
-      const entry = {
-        id,
-        name,
-        aliases,
-        code,
-        image: imgPath,
-        color,
-        style,
-        setName
-      };
+      // Show/hide git push hint
+      $('pushNote').style.display = imgUrl ? 'none' : 'inline';
 
+      const entry = { id, name, aliases, code, image: imgPath, color, style, setName };
       const jsonStr = JSON.stringify(entry, null, 2);
       $('outputJson').value = jsonStr;
       $('outputSection').style.display = 'block';
 
       // ---------- Preview ----------
-      const displayImg = imageDataUrl || '';
       const tagColors = { '粉色':'#fce7f3','蓝色':'#dbeafe','黑色':'#e5e7eb','白色':'#f9fafb','黄色':'#fef9c3','紫色':'#ede9fe' };
       const tagTexts = { '粉色':'#be185d','蓝色':'#1d4ed8','黑色':'#374151','白色':'#374151','黄色':'#92400e','紫色':'#7c3aed' };
 
       $('previewCard').innerHTML = `
-        <div class="pc-img">${displayImg ? `<img src="${displayImg}" alt="${name}">` : `<div style="height:100%;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:13px">无图片</div>`}</div>
+        <div class="pc-img">${displaySrc ? `<img src="${displaySrc}" alt="${name}">` : `<div style="height:100%;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:13px">无图片</div>`}</div>
         <div class="pc-body">
           <div class="pc-name">${escHtml(name)}</div>
           ${aliases.length ? `<div style="font-size:12px;color:#94a3b8">${escHtml(aliases.join(' / '))}</div>` : ''}
