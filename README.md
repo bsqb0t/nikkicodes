@@ -153,15 +153,13 @@ git push -u origin main
 
 建议上传前用图片工具将截图裁剪为 3:4，确保搭配主体居中。
 
-### 占位图替换
+### 当前示例图片
 
-`outfits.json` 中当前示例图片使用了 picsum.photos 在线占位图，替换为本地图片时：
+`images/` 中的 `.svg` 文件是自动生成的占位图，背景颜色与 `color` 字段对应，并显示套装名称和搭配码。
+上传实际截图后，把 `outfits.json` 的 `image` 字段改为图片路径即可覆盖使用。
 
 ```json
-// 修改前（在线占位图）
-"image": "https://picsum.photos/seed/outfit001/600/800"
-
-// 修改后（本地图片）
+// 修改后（使用本地截图）
 "image": "images/outfit-001.jpg"
 ```
 
