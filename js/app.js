@@ -165,7 +165,7 @@
       const safeCode = escapeHtml(item.code);
       return `
         <div class="card">
-          <div class="card-image">
+          <div class="card-image" onclick="openLightbox('${item.image}')">
             <img src="${item.image}" alt="${escapeHtml(item.name)}" loading="lazy">
           </div>
           <div class="card-body">
@@ -284,6 +284,20 @@
     toastTimer = setTimeout(() => {
       toast.classList.remove('show');
     }, 2000);
+  }
+
+  // ---------- Lightbox ----------
+  function openLightbox(src) {
+    const overlay = document.createElement('div');
+    overlay.className = 'lightbox';
+    overlay.innerHTML = `<div class="lightbox-bg"></div><img src="${src}" class="lightbox-img"><button class="lightbox-close">&times;</button>`;
+    overlay.querySelector('.lightbox-bg').addEventListener('click', () => overlay.remove());
+    overlay.querySelector('.lightbox-close').addEventListener('click', () => overlay.remove());
+    overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
+    document.addEventListener('keydown', function handler(e) {
+      if (e.key === 'Escape') { overlay.remove(); document.removeEventListener('keydown', handler); }
+    });
+    document.body.appendChild(overlay);
   }
 
   // ---------- Utils ----------

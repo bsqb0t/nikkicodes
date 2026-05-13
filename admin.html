@@ -261,6 +261,9 @@
     <!-- Output -->
     <div class="output-section" id="outputSection" style="display:none">
       <h3>JSON — 复制到 <code>data/outfits.json</code></h3>
+      <p style="font-size:13px;color:#64748b;margin:4px 0 10px">
+        粘贴到数组末尾 <code>]</code> 之前。若是追加到最后一条，则保留末尾逗号后再粘贴此段，或直接粘贴后在前一条末尾补逗号。
+      </p>
       <div class="output-box">
         <textarea id="outputJson" readonly></textarea>
         <button class="copy-btn-sm" id="copyBtn">复制</button>
@@ -339,7 +342,7 @@
       };
 
       const jsonStr = JSON.stringify(entry, null, 2);
-      $('outputJson').value = jsonStr + ',';
+      $('outputJson').value = jsonStr;
       $('outputSection').style.display = 'block';
 
       // ---------- Preview ----------
