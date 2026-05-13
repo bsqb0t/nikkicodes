@@ -41,16 +41,16 @@
     const sets = [...new Set(state.allData.map(d => d.setName))];
 
     filters.innerHTML = `
-      <div class="filter-group">
-        <span class="filter-label">颜色</span>
+      <div class="filter-group filter-group-color">
+        <span class="filter-label filter-label-color">颜色</span>
         ${colors.map(c => `<button class="filter-btn" data-group="color" data-value="${c}">${c}</button>`).join('')}
       </div>
-      <div class="filter-group">
-        <span class="filter-label">风格</span>
+      <div class="filter-group filter-group-style">
+        <span class="filter-label filter-label-style">风格</span>
         ${styles.map(s => `<button class="filter-btn" data-group="style" data-value="${s}">${s}</button>`).join('')}
       </div>
-      <div class="filter-group">
-        <span class="filter-label">套装</span>
+      <div class="filter-group filter-group-set">
+        <span class="filter-label filter-label-set">套装</span>
         ${sets.map(s => `<button class="filter-btn" data-group="setName" data-value="${s}">${s}</button>`).join('')}
       </div>
     `;

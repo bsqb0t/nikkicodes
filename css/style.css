@@ -112,26 +112,46 @@ main {
 /* Filters */
 #filters {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px 24px;
+  flex-direction: column;
+  gap: 10px;
   margin-bottom: 20px;
 }
 
 .filter-group {
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: 8px 12px;
   flex-wrap: wrap;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+.filter-group-color {
+  border-left: 3px solid var(--pink-400);
+}
+
+.filter-group-style {
+  border-left: 3px solid #a78bfa;
+}
+
+.filter-group-set {
+  border-left: 3px solid #60a5fa;
 }
 
 .filter-label {
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--gray-700);
   line-height: 34px;
   white-space: nowrap;
-  min-width: 36px;
+  min-width: 3em;
 }
+
+.filter-label-color { color: var(--pink-600); }
+.filter-label-style { color: #7c3aed; }
+.filter-label-set { color: #1d4ed8; }
 
 .filter-btn {
   padding: 6px 16px;
@@ -416,8 +436,9 @@ footer {
   .card-code { font-size: 11px; padding: 6px 10px; }
   .copy-btn { width: 32px; height: 32px; }
   .toolbar { flex-direction: column; align-items: stretch; }
-  #filters { gap: 8px 12px; }
-  .filter-label { line-height: 30px; font-size: 12px; }
+  #filters { gap: 6px; }
+  .filter-group { padding: 6px 10px; }
+  .filter-label { line-height: 30px; font-size: 12px; min-width: 2.5em; }
   .filter-btn { font-size: 12px; padding: 4px 12px; }
 }
 
