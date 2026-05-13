@@ -262,7 +262,9 @@
     <div class="output-section" id="outputSection" style="display:none">
       <h3>JSON — 复制到 <code>data/outfits.json</code></h3>
       <p style="font-size:13px;color:#64748b;margin:4px 0 10px">
-        粘贴到数组末尾 <code>]</code> 之前。若是追加到最后一条，则保留末尾逗号后再粘贴此段，或直接粘贴后在前一条末尾补逗号。
+        图片路径: <code id="imgPathDisplay" style="background:#f1f5f9;padding:2px 6px;border-radius:4px"></code><br>
+        粘贴到数组末尾 <code>]</code> 之前。若是追加到最后一条，则在前一条末尾补逗号。<br>
+        <strong>别忘了把上传的图片文件也 <code>git push</code> 到仓库</strong>
       </p>
       <div class="output-box">
         <textarea id="outputJson" readonly></textarea>
@@ -324,10 +326,11 @@
 
       const aliases = aliasesRaw ? aliasesRaw.split(/[,，]/).map(s => s.trim()).filter(Boolean) : [];
 
-      // Image filename
-      const ext = currentFile ? currentFile.name.split('.').pop() || 'jpg' : 'svg';
-      const imgFile = `${id}.${ext}`;
-      const imgPath = currentFile ? `images/${imgFile}` : `images/${id}.svg`;
+      // Image filename — use original filename when uploaded
+      const imgPath = currentFile ? `images/${currentFile.name}` : `images/${id}.svg`;
+
+      // Show image path
+      $('imgPathDisplay').textContent = imgPath;
 
       // Build JSON
       const entry = {
