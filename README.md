@@ -8,6 +8,7 @@
 
 ```
 ├── index.html           # 主页面
+├── admin.html           # 管理工具（可视化添加搭配）
 ├── css/style.css        # 样式表
 ├── js/app.js            # 前端逻辑（搜索/筛选/分页/复制）
 ├── data/outfits.json    # ★ 搭配码数据（唯一需要维护的文件）
@@ -62,7 +63,26 @@ git push -u origin main
 
 ## 添加新搭配码
 
-只需修改 **一个文件**：`data/outfits.json`
+推荐使用管理工具页面，也可手动编辑 JSON。
+
+### 方法一：使用管理工具（推荐）
+
+打开 `admin.html`（本地或线上均可），表单辅助生成条目：
+
+1. 上传搭配截图（保持原始文件名）
+2. 填写名称、搭配码、颜色、风格、套装系列
+3. 颜色/风格/套装支持输入或从已有数据下拉选择
+4. 点击「生成条目 & 预览」→ 自动输出 JSON
+5. 复制 JSON 到 `data/outfits.json` 末尾（在前一条末尾补逗号）
+6. 把截图文件放到 `images/` 目录下一并推送
+
+```
+git add images/xxx.jpg data/outfits.json
+git commit -m "添加搭配：xxx"
+git push
+```
+
+### 方法二：手动编辑 JSON
 
 ### 数据格式
 
@@ -95,15 +115,16 @@ git push -u origin main
 ### 完整操作流程
 
 ```
-1. 把搭配截图放入 images/ 目录，命名如 outfit-025.jpg
+1. 把搭配截图放入 images/ 目录（保持原始文件名）
 
 2. 编辑 data/outfits.json，在数组末尾追加一条记录
-   （注意上一条记录末尾的逗号）
+   （在前一条末尾补逗号）
 
-3. 本地预览：直接用浏览器打开 index.html 确认显示正常
+3. 本地预览：python3 -m http.server 8080
+   打开 http://localhost:8080 确认显示正常
 
 4. 提交并推送：
-   git add .
+   git add images/  data/outfits.json
    git commit -m "添加搭配：xxx"
    git push
 
@@ -112,9 +133,9 @@ git push -u origin main
 
 ### 注意事项
 
-- **id** 必须唯一，建议按顺序递增
+- **id** 必须唯一
 - **color / style / setName** 建议使用已有分类名称，新值会自动出现在筛选标签中
-- **修改已有分类名称**（如把 "粉色" 改为 "粉红色"）时，需要同步修改所有使用了该分类的条目
+- **图片路径**必须与 `images/` 下的文件名完全一致。使用管理工具时自动使用原始文件名
 - **JSON 末尾不要有多余逗号**，否则站点会加载失败
 
 ---
@@ -155,13 +176,13 @@ git push -u origin main
 
 ### 当前示例图片
 
-`images/` 中的 `.svg` 文件是自动生成的占位图，背景颜色与 `color` 字段对应，并显示套装名称和搭配码。
+`images/` 中的 `.svg` 文件是 `admin.html` 自动生成的占位图，背景颜色与 `color` 字段对应，并显示套装名称和搭配码。
 上传实际截图后，把 `outfits.json` 的 `image` 字段改为图片路径即可覆盖使用。
 
 ```json
-// 修改后（使用本地截图）
-"image": "images/outfit-001.jpg"
+"image": "images/你的截图文件名.jpg"
 ```
+图片路径必须与实际文件名完全一致，否则无法显示。
 
 ---
 
